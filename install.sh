@@ -21,7 +21,7 @@ echo $password | sudo -S sed -i 's|${script_dir}/dhcpd.leases|/run/dhcpd.leases|
 echo $password | sudo -S sed -i 's|${script_dir}/dhcpd.pid|/run/dhcpd.pid|g' $DIR/nv-l4t-usb-device-mode-start.sh
 echo $password | sudo -S sed -i 's|${script_dir}/dhcpd.leases|/run/dhcpd.leases|g' $DIR/nv-l4t-usb-device-mode-stop.sh
 echo $password | sudo -S sed -i 's|${script_dir}/dhcpd.pid|/run/dhcpd.pid|g' $DIR/nv-l4t-usb-device-mode-stop.sh
-cat $DIR/nv-l4t-usb-device-mode.sh | grep dhcpd_.*=
+cat $DIR/nv-l4t-usb-device-mode-start.sh | grep dhcpd_.*=
 cat $DIR/nv-l4t-usb-device-mode-stop.sh | grep dhcpd_.*=
 
 # enable i2c permissions
