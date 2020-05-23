@@ -12,13 +12,13 @@ cat $FILE
 echo $password | sudo -S systemctl restart systemd-timesyncd.service
 
 # fix USB device mode
-DIR="/opt/nvidia/l4t-usb-device-mode/"
-echo $password | sudo -S cp $DIR/nv-l4t-usb-device-mode.sh $DIR/nv-l4t-usb-device-mode.sh.orig
+DIR="/opt/nvidia/l4t-usb-device-mode"
+echo $password | sudo -S cp $DIR/nv-l4t-usb-device-mode-start.sh $DIR/nv-l4t-usb-device-mode-start.sh.orig
 echo $password | sudo -S cp $DIR/nv-l4t-usb-device-mode-stop.sh $DIR/nv-l4t-usb-device-mode-stop.sh.orig
 cat $DIR/nv-l4t-usb-device-mode.sh | grep dhcpd_.*=
 cat $DIR/nv-l4t-usb-device-mode-stop.sh | grep dhcpd_.*=
-echo $password | sudo -S sed -i 's|${script_dir}/dhcpd.leases|/run/dhcpd.leases|g' $DIR/nv-l4t-usb-device-mode.sh
-echo $password | sudo -S sed -i 's|${script_dir}/dhcpd.pid|/run/dhcpd.pid|g' $DIR/nv-l4t-usb-device-mode.sh
+echo $password | sudo -S sed -i 's|${script_dir}/dhcpd.leases|/run/dhcpd.leases|g' $DIR/nv-l4t-usb-device-mode-start.sh
+echo $password | sudo -S sed -i 's|${script_dir}/dhcpd.pid|/run/dhcpd.pid|g' $DIR/nv-l4t-usb-device-mode-start.sh
 echo $password | sudo -S sed -i 's|${script_dir}/dhcpd.leases|/run/dhcpd.leases|g' $DIR/nv-l4t-usb-device-mode-stop.sh
 echo $password | sudo -S sed -i 's|${script_dir}/dhcpd.pid|/run/dhcpd.pid|g' $DIR/nv-l4t-usb-device-mode-stop.sh
 cat $DIR/nv-l4t-usb-device-mode.sh | grep dhcpd_.*=
